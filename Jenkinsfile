@@ -3,7 +3,7 @@ pipeline {
   agent none
 
   environment {
-    DOCKER_IMAGE = "harris1111/flask-docker"
+    DOCKER_IMAGE = "harris1111/docker-flask"
   }
 
   stages {
@@ -22,7 +22,7 @@ pipeline {
     }
 
     stage("build") {
-      agent { node {label 'feature-Multiplay'}}
+      agent { node {label 'master'}}
       environment {
         DOCKER_TAG="${GIT_BRANCH.tokenize('/').pop()}-${GIT_COMMIT.substring(0,7)}"
       }
